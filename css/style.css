@@ -1569,3 +1569,16 @@ header {
     font-size: 18px !important;
     margin: 0 !important;
 }
+/* Hakikisha link ya admin haijifichi kwenye simu */
+.link[href="admin.html"] {
+    display: flex !important; /* Inalazimisha ionekane */
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Kama uliificha kwenye vioo vidogo, hii itairudisha */
+@media (max-width: 768px) {
+    .link[href="admin.html"] {
+        display: flex !important;
+    }
+}
