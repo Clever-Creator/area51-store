@@ -1582,3 +1582,42 @@ header {
         display: flex !important;
     }
 }
+/* Animation ya kinyamwezi kwa AREA 51 STORE */
+.logo-animate {
+    font-weight: bold;
+    text-transform: uppercase;
+    position: relative;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 5px #fff, 0 0 10px var(--area51-accent);
+        transform: scale(1);
+    }
+    to {
+        text-shadow: 0 0 20px var(--area51-accent), 0 0 30px #fff;
+        transform: scale(1.05); /* Inajikuza kwa mbali kama inapumua */
+    }
+}
+.sidebar-header {
+    overflow: hidden; /* Muhimu ili scanner isitoke nje */
+    position: relative;
+}
+
+.sidebar-header::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 20%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(30deg);
+    animation: scan 3s infinite;
+}
+
+@keyframes scan {
+    0% { left: -60%; }
+    100% { left: 120%; }
+}
