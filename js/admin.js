@@ -1,54 +1,50 @@
-// js/admin.js
+let base64Image = ""; // Hii iwe juu kabisa nje ya function
 
-// 1. Orodha ya bidhaa zako za mwanzo (Zile za demo)
-const initialProducts = [
-    { id: 1, name: "Raw Denim Jacket", price: 85000, category: "DENIM", img: "images/p1.jpg", inStock: true },
-    { id: 2, name: "Silver Stealth Ring", price: 45000, category: "JEWELRY", img: "images/p2.jpg", inStock: true },
-    { id: 3, name: "Midnight Fragrance", price: 120000, category: "SPRAYS", img: "images/p3.jpg", inStock: true }
-];
+// 1. Logic ya kuchagua picha
+document.getElementById('productImageFile').addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    const reader = new FileReader();
 
-// 2. Angalia kama kuna bidhaa tayari, kama hamna, weka hizi za mwanzo
-let products = JSON.parse(localStorage.getItem('area51_products'));
+    reader.onloadend = function() {
+        base64Image = reader.result;
+        const preview = document.getElementById('previewImg');
+        if(preview) {
+            preview.src = base64Image;
+            preview.style.display = "block";
+        }
+    };
 
-if (!products || products.length === 0) {
-    products = initialProducts;
-    localStorage.setItem('area51_products', JSON.stringify(products));
-}
+    if (file) {
+        reader.readAsDataURL(file);
+    }
+});
 
-// ... kodi nyingine ya admin.js inaendelea hapa chini ...
-
-
+// 2. Function ya ku-deploy (Hakikisha jina linafanana na la kwenye HTML)
 function deployProduct() {
-    const name = document.getElementById('pName').value;
-    const price = document.getElementById('pPrice').value;
-    const category = document.getElementById('pCategory').value;
-    const img = document.getElementById('pImg').value;
+    const name = document.querySelector('input[placeholder="Gear Name..."]').value;
+    const price = document.querySelector('input[placeholder="Price (Tsh)..."]').value;
+    const category = document.querySelector('select').value;
 
-    if (!name || !price || !img) {
-        alert("🚨 Agent, you missed some data fields!");
+    if (!name || !price || !base64Image) {
+        alert("Commander, jaza taarifa zote na uweke picha!");
         return;
     }
 
-    const newProduct = {
+    const newGear = {
         id: Date.now(),
         name: name,
-        price: parseInt(price),
+        price: price,
         category: category,
-        img: img
+        image: base64Image
     };
 
-    products.push(newProduct);
-    localStorage.setItem('area51_products', JSON.stringify(products));
-    
-    // Refresh list pekee bila kurefresh page nzima
-    renderAdminProducts();
-    
-    // Clear inputs
-    document.getElementById('pName').value = '';
-    document.getElementById('pPrice').value = '';
-    document.getElementById('pImg').value = '';
-    
-    alert("🔥 GEAR DEPLOYED SUCCESSFULLY!");
+    // Hapa weka kodi yako ya ku-save (mfano LocalStorage)
+    let inventory = JSON.parse(localStorage.getItem('area51_inventory')) || [];
+    inventory.push(newGear);
+    localStorage.setItem('area51_inventory', JSON.stringify(inventory));
+
+    alert("Gear Deployed to Area 51!");
+    location.reload(); // Refresh kuona bidhaa mpya
 }
 
 function deleteProduct(id) {
@@ -164,7 +160,6 @@ function editProduct(id) {
     }
 }
 // Hii inabadilisha picha kuwa "Data URL" ambayo unaweza kuitumia dukani
-let base64Image = "";
 
 document.getElementById('productImageFile').addEventListener('change', function(e) {
     const file = e.target.files[0];

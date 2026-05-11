@@ -413,20 +413,20 @@ header {
 
 /* Rangi za Light Mode */
 :root[data-theme="light"] {
-    --bg: #353f6b;         /* Background nyeupe */
-    --text: #f4ece2;       /* Maandishi ya giza (Hapa AREA itaonekana) */
-    --area51-accent: #8d6e63; /* Kijani ya 51 */
---border: rgba(0,0,0,0.1);
+    --bg: #ffffff;         /* Background nyeupe */
+    --text: #0f172a;       /* Maandishi ya giza (Hapa AREA itaonekana) */
+    --area51-accent: #1e293b; /* Kijani ya 51 */
+--card: #b3c0cd;
+    --border: rgba(0,0,0,0.08);
 }
 
 /* Rangi za Dark Mode */
 :root[data-theme="dark"] {
-    --bg: #2c241a;         /* Background ya giza */
-    --text: #f4ece2;       /* Maandishi meupe (Hapa AREA itaonekana) */
-    --area51-accent: #8d6e63; /* Kijani ya 51 */
---card: #1a1510;
-    --border: rgba(255,255,255,0.05);
-}
+    --bg: #0f172a;         /* Background ya giza */
+    --text: #f8fafc;       /* Maandishi meupe (Hapa AREA itaonekana) */
+    --area51-accent: #38bdf8; /* Kijani ya 51 */
+--card: #1e293b;
+--border: rgba(255, 255, 255, 0.1);}
 
 body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; margin: 0; transition: 0.3s; }
 
@@ -1620,4 +1620,8 @@ header {
 @keyframes scan {
     0% { left: -60%; }
     100% { left: 120%; }
+}
+body {
+    background-color: var(--bg) !important;
+    color: var(--text) !important;
 }
