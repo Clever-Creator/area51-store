@@ -43,7 +43,11 @@
         <div class="link" onclick="showSection('home', this)">🏠 Home Base</div>
         <div class="link" onclick="showSection('cart', this)">🛒 My Inventory</div>
         <div class="link" onclick="showSection('profile', this)">🕶️ Agent Profile</div>
-    <div class="side-location">
+   <a href="admin.html" class="link">
+    <i class="nav-icon">⚙️</i>
+    <span class="link-title">Area 51 Admin Center</span>
+</a>
+        <div class="side-location">
             <p class="menu-label">HEADQUARTERS</p>
             <div class="location-card">
                 <div class="loc-icon">📍</div>
@@ -73,16 +77,16 @@
     <header style="display: flex; align-items: center; justify-content: space-between; padding: 1px 16px; position: fixed; top: 0; width: 100%; z-index: 1000; background: var(--bg);">
         <div style="display: flex; align-items: center; gap: 10px;">
             <div class="menu-trigger" onclick="toggleMenu()" style="font-size: 24px; cursor: pointer;">☰</div>
+            <img src="images/area51_logo.png" alt="Logo" class="header-logo" style="height: px;">
             <div class="logo-container">
-                <img src="images/area51_logo.png" alt="Logo" class="header-logo" style="height: px;">
             </div>
         </div>
         <div class="logo" style="position: absolute; left: 50%; transform: translateX(-50%); font-weight: 500; letter-spacing: 2px;">
             AREA<span style="color: var(--area51-accent);"> 51 STORE</span>
         </div>
         <div style="display: flex; gap: 15px; align-items: center;">
-            <div id="theme-btn" onclick="toggleTheme()" style="cursor:pointer;">🌘</div>
-            <div class="cart-trigger" onclick="showSection('cart', document.querySelector('.link-cart'))">🛍️ <span id="cartCount">0</span></div>
+            <div id="theme-btn" onclick="toggleTheme()" style="cursor:pointer;">🌙</div>
+            <div class="cart-trigger" onclick="showSection('cart', document.querySelector('.link-cart'))">🛒<span id="cartCount">0</span></div>
         </div>
     </header>
 

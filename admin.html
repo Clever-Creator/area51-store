@@ -195,7 +195,31 @@
                 <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> RETURN TO BASE</a>
                 <h1 style="margin: 10px 0 0 0; font-size: 24px;">COMMAND <span style="color: var(--accent);">CENTER</span></h1>
             </div>
-            <div class="status-badge"><i class="fas fa-circle" style="font-size: 7px;"></i> Agent Online</div>
+            
+        <div class="status-badge"><i class="fas fa-circle" style="font-size: 7px;"></i> Agent Online</div>
+        <script>
+    // Area 51 Security Protocol
+    const ADMIN_PASSWORD = "Thue"; // Hapa weka password unayotaka wewe
+
+    function checkAccess() {
+        let access = sessionStorage.getItem("admin_access");
+        
+        if (access !== "granted") {
+            let attempt = prompt("Area 51 Admin Center: Access Restricted.\nEnter Security Code:");
+            
+            if (attempt === ADMIN_PASSWORD) {
+                sessionStorage.setItem("admin_access", "granted");
+                alert("Access Granted. Welcome, Commander.");
+            } else {
+                alert("Wrong Code! Incident reported.");
+                window.location.href = "index.html"; // Inamrudisha mteja dukani
+            }
+        }
+    }
+
+    // Piga ulinzi kila peji inapofunguliwa
+    checkAccess();
+</script>
         </header>
 
         <div class="deploy-grid">

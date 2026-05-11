@@ -30,7 +30,7 @@ header {
 
 .logo {
     font-weight: 900;
-    font-size: 22px;
+    font-size: 23px;
     letter-spacing: -0.5px;
     text-transform: uppercase;
 }
@@ -56,21 +56,31 @@ header {
     gap: 12px;
     padding: 15px;
 }
+/* Style maalum kwa ajili ya Admin Center Header */
+.admin-header {
+    background: #1a1a1a !important;
+    border-bottom: 2px solid var(--area51-accent);
+}
 
+.admin-header .logo span {
+    color: var(--area51-accent);
+    font-size: 14px;
+    letter-spacing: 2px;
+}
 @media (min-width: 768px) {
     .product-grid {
         grid-template-columns: repeat(4, 1fr);
     }
 }
 /* Rekebisha bidhaa zenyewe zisionekane zimepinda */
-.product-grid .p-card {
-    /* Rudisha bidhaa zinyooke wakati grid imepinda */
-    transform: rotate(10deg) skew(-5deg); 
-    transition: transform 0.3s ease;
-    /* Ongeza shadow ili zionekane vizuri */
-    box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
+.p-card {
+    /* ... kodi zako zingine zote ziache ... */
+    border-radius: 2px !important; /* Hii inanyoosha box ziwe sharp kabisa */
 }
 
+.p-card img {
+    border-radius: 1px !important; /* Inanyoosha na picha pia */
+}
 /* Animation mteja akigusa bidhaa */
 .product-grid .p-card:hover {
     /* "Zuumu" bidhaa kidogo na kuinyoosha mteja akiigusa */
@@ -403,16 +413,19 @@ header {
 
 /* Rangi za Light Mode */
 :root[data-theme="light"] {
-    --bg: #ffffff;         /* Background nyeupe */
-    --text: #75767a;       /* Maandishi ya giza (Hapa AREA itaonekana) */
-    --area51-accent: #083f59; /* Kijani ya 51 */
+    --bg: #353f6b;         /* Background nyeupe */
+    --text: #f4ece2;       /* Maandishi ya giza (Hapa AREA itaonekana) */
+    --area51-accent: #8d6e63; /* Kijani ya 51 */
+--border: rgba(0,0,0,0.1);
 }
 
 /* Rangi za Dark Mode */
 :root[data-theme="dark"] {
-    --bg: #0f172a;         /* Background ya giza */
-    --text: #216a9c;       /* Maandishi meupe (Hapa AREA itaonekana) */
-    --area51-accent: #64748b; /* Kijani ya 51 */
+    --bg: #2c241a;         /* Background ya giza */
+    --text: #f4ece2;       /* Maandishi meupe (Hapa AREA itaonekana) */
+    --area51-accent: #8d6e63; /* Kijani ya 51 */
+--card: #1a1510;
+    --border: rgba(255,255,255,0.05);
 }
 
 body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; margin: 0; transition: 0.3s; }
@@ -537,6 +550,13 @@ header { display: flex; justify-content: space-between; padding: 15px 20px; alig
     cursor: pointer;
     font-size: 22px;
     transition: transform 0.3s ease;
+}
+.floating-actions {
+    right: 25px !important; /* Inazisogeza mbali kidogo na ukingo wa simu */
+    bottom: 100px !important; /* Inazisogeza juu ili zisigusane na Menu ya chini */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 .quantity-control {
     display: flex;
@@ -1168,7 +1188,10 @@ body {
     color: var(--area51-accent);
     transform: translateX(5px);
 }
-
+.nav-icon, .theme-toggle i, .cart-icon i {
+    font-size: 22px; /* Inazikuza kidogo zionekane */
+    color: var(--text); /* Inafuata rangi ya maandishi tuliyoweka awali */
+}
 .side-divider {
     height: 1px; background: rgba(255,255,255,0.05);
     margin: 20px;
@@ -1489,4 +1512,60 @@ header {
     background: var(--area51-accent);
     color: black;
     border-color: var(--area51-accent);
+}
+/* Kulazimisha Style ya Buttons (Theme & Cart) */
+header .theme-toggle, 
+header .cart-icon {
+    background: rgba(0, 0, 0, 0.05) !important; /* Kivuli chepesi */
+    padding: 12px !important;
+    border-radius: 4px !important; /* Style mpya: Sharp kidogo */
+    margin-left: 15px !important; /* Hii inazisogeza kulia kidogo */
+    border: 1px solid var(--area51-accent) !important;
+    display: inline-flex !important;
+    transition: 0.3s all ease !important;
+}
+
+/* Kama unatumia Flexbox kwenye Header, sogeza kulia kabisa */
+header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+}
+
+/* Hii inahakikisha kundi la icons linakaa upande wa kulia */
+.header-actions {
+    display: flex !important;
+    gap: 20px !important; /* Hii ndio itazitenganisha zenyewe kwa zenyewe */
+}
+/* 1. Sukuma kila kitu cha header kuelekea katikati (ndani kidogo) */
+header {
+    padding-left: 25px !important;  /* Sukuma Logo kuelekea kulia */
+    padding-right: 25px !important; /* Sukuma Icons kuelekea kushoto (ndani) */
+    box-sizing: border-box !important;
+}
+
+/* 2. Ongeza nafasi kati ya Theme Toggle na Cart */
+.header-actions {
+    display: flex !important;
+    gap: 15px !important; /* Hii inatenganisha icon moja na nyingine */
+    margin-right: 5px !important; /* Inahakikisha hazigusi ukingo */
+}
+
+/* 3. Style mpya ya kijanja (Modern Minimalist) */
+.theme-toggle, .cart-icon {
+    width: 42px !important;
+    height: 42px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: rgba(141, 110, 99, 0.1) !important; /* Rangi ya Earth Brown kwa mbali */
+    border: 1.5px solid var(--area51-accent) !important;
+    border-radius: 4px !important; /* Sharp edges kidogo kama Thue alivyoomba */
+    cursor: pointer;
+}
+
+/* 4. Hakikisha Icon zenyewe zimekaa sawa */
+.nav-icon {
+    font-size: 18px !important;
+    margin: 0 !important;
 }
