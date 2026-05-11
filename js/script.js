@@ -150,7 +150,7 @@ function processPayment() {
     const item = document.getElementById('mName').innerText;
     const qty = document.getElementById('qtyDisplay').innerText;
     const msg = `Habari AREA51! 👋 Nimefanya malipo ya ${amount}.\n\nOda yangu:\n- ${item} (Qty: ${qty})\n\nNaomba nithibitishiwe.`;
-    window.open(`https://wa.me/255753556426?text=${encodeURIComponent(msg)}`, '_blank');
+    window.open(`https://wa.me/255759515115?text=${encodeURIComponent(msg)}`, '_blank');
 }
 
 function closeModal() { document.getElementById('productModal').style.display = 'none'; }
