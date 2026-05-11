@@ -163,3 +163,39 @@ function editProduct(id) {
         alert("Editing: " + product.name + ". Make changes and click Deploy.");
     }
 }
+// Hii inabadilisha picha kuwa "Data URL" ambayo unaweza kuitumia dukani
+let base64Image = "";
+
+document.getElementById('productImageFile').addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+
+    reader.onloadend = function() {
+        base64Image = reader.result;
+        // Onyesha picha kidogo mteja ajue imekubali
+        const preview = document.getElementById('previewImg');
+        preview.src = base64Image;
+        preview.style.display = "block";
+    };
+
+    if (file) {
+        reader.readAsDataURL(file);
+    }
+});
+
+// Kwenye ile function yako ya ku-save bidhaa (Submit)
+function addProduct() {
+    const productName = document.getElementById('productName').value;
+    const productPrice = document.getElementById('productPrice').value;
+    
+    // Tumia 'base64Image' badala ya ile link ya zamani
+    const newProduct = {
+        name: productName,
+        price: productPrice,
+        image: base64Image // Hapa ndio picha yenyewe kutoka kwenye device
+    };
+
+    // Hapa endelea na kodi zako za ku-save kwenye LocalStorage au Array
+    console.log("Bidhaa imeongezwa!", newProduct);
+    alert("Product Uploaded Successfully!");
+}

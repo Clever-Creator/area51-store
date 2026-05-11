@@ -242,10 +242,12 @@
                         <option value="SPRAYS">Fragrances</option>
                     </select>
                 </div>
-                <div class="input-box">
-                    <i class="fas fa-image"></i>
-                    <input type="text" id="pImg" placeholder="Image URL (e.g. images/p1.jpg)">
-                </div>
+                <div class="input-group">
+    <label>Product Image</label>
+    <input type="file" id="productImageFile" accept="image/*" class="admin-input">
+    <div id="imagePreview" style="margin-top: 10px;">
+<img id="previewImg" src="about:blank" style="max-width: 100px; display: none; border-radius: 4px;" alt="Preview">    </div>
+</div>
                 <button class="btn-deploy" onclick="deployProduct()">🚀 Deploy Gear</button>
             </aside>
 
